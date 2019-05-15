@@ -26,14 +26,14 @@ public class UserService {
 
     @Transactional
     public boolean tx() {
-        User u1 = new User();
-        u1.setId(2);
-        u1.setName("2222");
+        User u1 = new User(2, "222");
+//        u1.setId(2);
+//        u1.setName("2222");
         userDao.insert(u1);
 
-        User u2 = new User();
-        u2.setId(1);
-        u2.setName("1111");
+        User u2 = new User(1, "111");
+//        u2.setId(1);
+//        u2.setName("1111");
         userDao.insert(u2);
         return true;
     }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @program: seconds_kill_system
- * @Description:
+ * @Description: DAO层User
  * @Author: SOYANGA
  * @Create: 2019-05-14 21:30
  * @Version 1.0

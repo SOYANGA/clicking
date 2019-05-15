@@ -1,6 +1,8 @@
 package com.github.soyanga.secondskillsystem.controller;
 
 import com.github.soyanga.secondskillsystem.domain.User;
+import com.github.soyanga.secondskillsystem.redis.RedisService;
+import com.github.soyanga.secondskillsystem.redis.UserKey;
 import com.github.soyanga.secondskillsystem.result.CodeMsg;
 import com.github.soyanga.secondskillsystem.result.Result;
 import com.github.soyanga.secondskillsystem.service.UserService;
@@ -23,6 +25,9 @@ public class SampleController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    RedisService redisService;
 
     @RequestMapping("/")
     @ResponseBody
@@ -64,5 +69,35 @@ public class SampleController {
         return Result.success(true);
     }
 
+//    @RequestMapping("/redis/get")
+//    @ResponseBody
+//    public Result<Long> redisGet() {
+//        Long value1 = redisService.get("key1", Long.class);
+//        return Result.success(value1);
+//    }
 
+
+    @RequestMapping("/redis/get")
+    @ResponseBody
+    public Result<User> redisGet2() {
+        User user = redisService.get(UserKey.geyById, "" + 1, User.class);
+        return Result.success(user);
+    }
+
+
+//    @RequestMapping("/redis/set")
+//    @ResponseBody
+//    public Result<String> redisSet() {
+//        Boolean ret = redisService.set("key2", "hello Redis");
+//        String str = redisService.get("key2", String.class);
+//        return Result.success(str);
+//    }
+
+    @RequestMapping("/redis/set")
+    @ResponseBody
+    public Result<Boolean> redisSet() {
+        User user = new User(1, "soyanga");
+        Boolean ret = redisService.set(UserKey.geyById, "" + 1, user);
+        return Result.success(true);
+    }
 }

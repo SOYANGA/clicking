@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @program: seconds_kill_system
- * @Description:
+ * @Description: 请求返回封装
  * @Author: SOYANGA
  * @Create: 2019-05-14 19:33
  * @Version 1.0
