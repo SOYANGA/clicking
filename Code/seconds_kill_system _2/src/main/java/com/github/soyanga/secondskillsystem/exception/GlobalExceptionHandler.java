@@ -24,6 +24,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)  //该注解声明异常处理方法
     public Result<String> exceptionHandler(HttpServletRequest request, Exception e) {
+        e.printStackTrace();
         //对于自定义异常的处理 处理登陆异常错误处理
         if (e instanceof GlobalException) {
             GlobalException globalException = (GlobalException) e;

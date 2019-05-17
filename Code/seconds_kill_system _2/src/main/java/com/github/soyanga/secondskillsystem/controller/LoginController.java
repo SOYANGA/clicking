@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
@@ -54,11 +55,11 @@ public class LoginController {
      */
     @RequestMapping("/do_login")
     @ResponseBody
-    public Result<Boolean> doLogin(@Valid LoginVo loginVo) {
+    public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
         //在前端讲参数传输到后台时 参数校验注解生效 就会进行参数校验，异常处理都会在统一的异常处理器中去处理
         logger.info(loginVo.toString());
-        //登陆+前后端数据库参数校验 出现异常也会在统一的异常处理器中去处理
-        userService.login(loginVo);
+        //登陆+前后端数据库参数校验 出现异常也会在统一的异常处理器中去处理+生成在Redis中存储，并发送给浏览器Session
+        userService.login(response, loginVo);
         return Result.success(true);
     }
 }
