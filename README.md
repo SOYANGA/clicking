@@ -1,5 +1,5 @@
+# :crossed_fingers:clicking
 
-#:crossed_fingers: clicking
 <center><b>When you're ready to buy a seckill item, you click the seckill button repeatedly </b></center>
 
 ![项目作者](https://img.shields.io/badge/author-soyanga-orange.svg) ![项目使用语言](https://img.shields.io/badge/language-java-yellow.svg) ![JDK版本](https://img.shields.io/badge/JDK-1.8-brightgreen.svg) ![项目状态](https://img.shields.io/badge/clicking-doing-green.svg) ![项目进度](http://progressed.io/bar/80?title=progress)
