@@ -1,4 +1,4 @@
-                                                       # :crossed_fingers: clicking
+<center><h1>:crossed_fingers: clicking</h1></center>
 
                          When you're ready to buy a seckill item, you click the seckill button repeatedly
 
