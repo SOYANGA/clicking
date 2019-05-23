@@ -12,7 +12,7 @@ Clicking是一个基于SpringBoot实现的秒杀系统，通过一些优化，�
 
 ## 项目效果展示
 
-![ProjectPresentations3](C:\Users\32183\Desktop\ProjectPresentations3.gif)
+![ProjectPresentations3](https://github.com/SOYANGA/clicking/blob/master/img/ProjectPresentations.gif)
 
 ## 项目的基本结构
 
@@ -59,6 +59,8 @@ Clicking是一个基于SpringBoot实现的秒杀系统，通过一些优化，�
     └─java	-- 测试文件
 </code></pre>
 </details>
+
+
 ## 具体技术栈
 
 - 前端:JQuery+Bootstrap+Thymeleaf
