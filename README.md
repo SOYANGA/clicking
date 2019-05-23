@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 #:crossed_fingers: clicking
 <center><b>When you're ready to buy a seckill item, you click the seckill button repeatedly </b></center>
+=======
+<center><h1>:crossed_fingers: clicking</h1></center>
+>>>>>>> 0bcf3129c917fa4e6ad055068142d2ba8fe3c206
 
-![项目作者](https://img.shields.io/badge/author-soyanga-orange.svg)![项目使用语言](https://img.shields.io/badge/language-java-yellow.svg)![JDK版本](https://img.shields.io/badge/JDK-1.8-brightgreen.svg)![项目状态](https://img.shields.io/badge/clicking-doing-green.svg)![项目进度](http://progressed.io/bar/80?title=progress)
+                         When you're ready to buy a seckill item, you click the seckill button repeatedly
+
+![项目作者](https://img.shields.io/badge/author-soyanga-orange.svg) ![项目使用语言](https://img.shields.io/badge/language-java-yellow.svg) ![JDK版本](https://img.shields.io/badge/JDK-1.8-brightgreen.svg) ![项目状态](https://img.shields.io/badge/clicking-doing-green.svg) ![项目进度](http://progressed.io/bar/80?title=progress)
 
 ## 项目介绍：
 
@@ -113,6 +119,6 @@ Clicking是一个基于SpringBoot实现的秒杀系统，通过一些优化，�
 
 
 
-## 项目详细搭建过程，具体技术实现（…正在整理完善 :happy:
+## 项目详细搭建过程，具体技术实现（…正在整理完善 :happy:)
 
 [![我的博客](https://img.shields.io/badge/Blog-@SOYANGA-red.svg)](https://soyanga.github.io/)
