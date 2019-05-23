@@ -1,0 +1,173 @@
+卷 DATA 的文件夹 PATH 列表
+卷序列号为 1578-E3C0
+D:.
+│  tree.txt
+│  
+├─main
+│  ├─java
+│  │  └─com
+│  │      └─github
+│  │          └─soyanga
+│  │              └─secondskillsystem
+│  │                  │  MainApplication.java
+│  │                  │  
+│  │                  ├─access
+│  │                  │      AccessInterceptor.java
+│  │                  │      AccessLimit.java
+│  │                  │      UserContext.java
+│  │                  │      
+│  │                  ├─config
+│  │                  │      UserArgumentResolver.java
+│  │                  │      WebConfig.java
+│  │                  │      
+│  │                  ├─controller
+│  │                  │      GoodsController.java
+│  │                  │      LoginController.java
+│  │                  │      OrderController.java
+│  │                  │      SampleController.java
+│  │                  │      SeckillController.java
+│  │                  │      UserController.java
+│  │                  │      
+│  │                  ├─dao
+│  │                  │      GoodsDao.java
+│  │                  │      OrderDao.java
+│  │                  │      SeckillUserDao.java
+│  │                  │      UserDao.java
+│  │                  │      
+│  │                  ├─domain
+│  │                  │      Goods.java
+│  │                  │      OrderInfo.java
+│  │                  │      SeckillGoods.java
+│  │                  │      SeckillOrder.java
+│  │                  │      SeckillUser.java
+│  │                  │      User.java
+│  │                  │      
+│  │                  ├─exception
+│  │                  │      GlobalException.java
+│  │                  │      GlobalExceptionHandler.java
+│  │                  │      
+│  │                  ├─rabbitmq
+│  │                  │      MQConfig.java
+│  │                  │      MQReceiver.java
+│  │                  │      MQSender.java
+│  │                  │      SeckillMessage.java
+│  │                  │      
+│  │                  ├─redis
+│  │                  │      AccessKey.java
+│  │                  │      BasePrefix.java
+│  │                  │      GoodsKey.java
+│  │                  │      KeyPrefix.java
+│  │                  │      OrderKey.java
+│  │                  │      RedisConfig.java
+│  │                  │      RedisPollFactory.java
+│  │                  │      RedisService.java
+│  │                  │      SeckillKey.java
+│  │                  │      SeckillUserkey.java
+│  │                  │      UserKey.java
+│  │                  │      
+│  │                  ├─result
+│  │                  │      CodeMsg.java
+│  │                  │      Result.java
+│  │                  │      
+│  │                  ├─service
+│  │                  │      GoodsService.java
+│  │                  │      OrderService.java
+│  │                  │      SeckillService.java
+│  │                  │      SeckillUserService.java
+│  │                  │      UserService.java
+│  │                  │      
+│  │                  ├─util
+│  │                  │      DBUtil.java
+│  │                  │      MD5Util.java
+│  │                  │      UserUtil.java
+│  │                  │      UUIDUtil.java
+│  │                  │      ValidatorUtil.java
+│  │                  │      
+│  │                  ├─Validator
+│  │                  │      IsMobile.java
+│  │                  │      IsMobileValidator.java
+│  │                  │      
+│  │                  └─vo
+│  │                          GoodsDetailVo.java
+│  │                          GoodsVo.java
+│  │                          LoginVo.java
+│  │                          OrderDetailVo.java
+│  │                          
+│  └─resources
+│      │  application.properties
+│      │  
+│      ├─static
+│      │  │  goods_detail.htm
+│      │  │  order_detail.htm
+│      │  │  
+│      │  ├─bootstrap
+│      │  │  ├─css
+│      │  │  │      bootstrap-theme.css
+│      │  │  │      bootstrap-theme.css.map
+│      │  │  │      bootstrap-theme.min.css
+│      │  │  │      bootstrap-theme.min.css.map
+│      │  │  │      bootstrap.css
+│      │  │  │      bootstrap.css.map
+│      │  │  │      bootstrap.min.css
+│      │  │  │      bootstrap.min.css.map
+│      │  │  │      
+│      │  │  ├─fonts
+│      │  │  │      glyphicons-halflings-regular.eot
+│      │  │  │      glyphicons-halflings-regular.svg
+│      │  │  │      glyphicons-halflings-regular.ttf
+│      │  │  │      glyphicons-halflings-regular.woff
+│      │  │  │      glyphicons-halflings-regular.woff2
+│      │  │  │      
+│      │  │  └─js
+│      │  │          bootstrap.js
+│      │  │          bootstrap.min.js
+│      │  │          npm.js
+│      │  │          
+│      │  ├─img
+│      │  │      bg.jpg
+│      │  │      bg2.jpg
+│      │  │      iphonex.png
+│      │  │      iphonexs.png
+│      │  │      meta20pro.png
+│      │  │      mi9.png
+│      │  │      
+│      │  ├─jquery-validation
+│      │  │  │  additional-methods.min.js
+│      │  │  │  jquery.validate.min.js
+│      │  │  │  
+│      │  │  └─localization
+│      │  │          messages_zh.min.js
+│      │  │          
+│      │  ├─js
+│      │  │      common.js
+│      │  │      jquery.min.js
+│      │  │      md5.min.js
+│      │  │      
+│      │  └─layer
+│      │      │  layer.js
+│      │      │  
+│      │      ├─mobile
+│      │      │  │  layer.js
+│      │      │  │  
+│      │      │  └─need
+│      │      │          layer.css
+│      │      │          
+│      │      └─skin
+│      │          └─default
+│      │                  icon-ext.png
+│      │                  icon.png
+│      │                  layer.css
+│      │                  loading-0.gif
+│      │                  loading-1.gif
+│      │                  loading-2.gif
+│      │                  
+│      └─templates
+│              goods_detail.html
+│              goods_list.html
+│              hello.html
+│              login.html
+│              order_detail.html
+│              seckill_fail.html
+│              
+└─test
+    └─java

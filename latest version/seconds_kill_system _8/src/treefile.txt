@@ -1,0 +1,40 @@
+卷 DATA 的文件夹 PATH 列表
+卷序列号为 1578-E3C0
+D:.
+├─main
+│  ├─java
+│  │  └─com
+│  │      └─github
+│  │          └─soyanga
+│  │              └─secondskillsystem
+│  │                  ├─access
+│  │                  ├─config
+│  │                  ├─controller
+│  │                  ├─dao
+│  │                  ├─domain
+│  │                  ├─exception
+│  │                  ├─rabbitmq
+│  │                  ├─redis
+│  │                  ├─result
+│  │                  ├─service
+│  │                  ├─util
+│  │                  ├─Validator
+│  │                  └─vo
+│  └─resources
+│      ├─static
+│      │  ├─bootstrap
+│      │  │  ├─css
+│      │  │  ├─fonts
+│      │  │  └─js
+│      │  ├─img
+│      │  ├─jquery-validation
+│      │  │  └─localization
+│      │  ├─js
+│      │  └─layer
+│      │      ├─mobile
+│      │      │  └─need
+│      │      └─skin
+│      │          └─default
+│      └─templates
+└─test
+    └─java
