@@ -23,7 +23,6 @@ public class ValidatorUtil {
         Matcher matcher = MOBILE_PATTEN.matcher(src);
         return matcher.matches();
     }
-
 //    public static void main(String[] args) {
 //        System.out.println(isMobile("17729506670"));
 //        System.out.println(isMobile("1772950667A"));

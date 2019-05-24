@@ -32,7 +32,7 @@ import java.util.Map;
 
 /**
  * @program: seconds_kill_system _3
- * @Description:
+ * @Description: 秒杀业务处理
  * @Author: SOYANGA
  * @Create: 2019-05-18 17:37
  * @Version 1.0
@@ -98,7 +98,6 @@ public class SeckillController implements InitializingBean {
     public Result<Integer> doSeckill(Model model, SeckillUser user,
                                      @RequestParam("goodsId") long goodsId,
                                      @PathVariable("path") String path) {
-        model.addAttribute("user", user);
         //判断用户登陆与否
         if (user == null) {
             return Result.error(CodeMsg.SERVER_ERROR);
@@ -116,6 +115,10 @@ public class SeckillController implements InitializingBean {
         }
         //2.收到请求后首先减Redis中的库存 预减库存
         long stock = redisService.decr(GoodsKey.getSeckillGoodsStock, "" + goodsId);
+        if (stock == 0) {
+            //当前秒杀商品库存已经没有了
+            localOverMap.put(goodsId, true);
+        }
         if (stock < 0) {
             //当库存不够时将是否秒杀完毕标志修改
             localOverMap.put(goodsId, true);
@@ -175,7 +178,6 @@ public class SeckillController implements InitializingBean {
     @RequestMapping(value = "/result", method = RequestMethod.GET)
     @ResponseBody
     public Result<Long> seckillResult(Model model, SeckillUser user, @RequestParam("goodsId") long goodsId) {
-        model.addAttribute("user", user);
         if (user == null) {
             return Result.error(CodeMsg.SERVER_ERROR);
         }
@@ -245,7 +247,7 @@ public class SeckillController implements InitializingBean {
         //校验验证码
         boolean check = seckillService.checkVerifyCode(user, goodsId, verifyCode);
         if (!check) {
-            return Result.error(CodeMsg.REQUEST_ILLEGAL);
+            return Result.error(CodeMsg.VERIFYCODE_ERROE);
         }
         //获取路径
         String path = seckillService.createSeckillPath(user, goodsId);

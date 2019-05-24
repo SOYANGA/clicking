@@ -27,7 +27,7 @@ public class IsMobileValidator implements ConstraintValidator<IsMobile, String> 
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        //不可以为空 默认rrequired为true 不允许为空
+        //不可以为空 默认required为true 不允许为空
         if (required) {
             //判断手机号码格式
             return ValidatorUtil.isMobile(value);

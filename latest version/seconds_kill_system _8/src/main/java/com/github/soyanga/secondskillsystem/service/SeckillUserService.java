@@ -122,7 +122,7 @@ public class SeckillUserService {
      */
     private void addCookie(HttpServletResponse response, String token, SeckillUser user) {
         //标识token对应的是那个用户
-        //讲用户信息写到Redis当中 ()
+        //将户信息写到Redis当中 ()
         redisService.set(SeckillUserkey.token, token, user);
         //2.生成Cookie将token写给浏览器
         Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token);
@@ -134,7 +134,7 @@ public class SeckillUserService {
     }
 
     /**
-     * 从Redis缓存中取出对应token的User对象
+     * 从Redis缓存中取出对应token的User对象 并Cookie存储延长有效期
      *
      * @param token 令牌（SessionID）
      * @return User对象

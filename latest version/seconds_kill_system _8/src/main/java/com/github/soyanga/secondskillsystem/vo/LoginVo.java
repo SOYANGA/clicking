@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @program: seconds_kill_system _2
- * @Description:
+ * @Description: 用户登陆前端传来参数整合
  * @Author: SOYANGA
  * @Create: 2019-05-16 14:10
  * @Version 1.0

@@ -92,20 +92,22 @@
 </body>
 <script>
 
-    function getSeckillPath() {
-        var goodsId = $("#goodsId").val();
-        g_showLoading();
+    //开始加载页面
+    $(function () {
+        //countDown();
+        getDetail();
+    });
+
+    //获取页面中商品所有
+    function getDetail() {
+        //解析参数goodsId
+        var goodsId = g_getQueryString("goodsId");
         $.ajax({
-            url: "/seckill/path",
+            url: "/goods/detail/" + goodsId,
             type: "GET",
-            data: {
-                goodsId: goodsId,
-                verifyCode: $("#verifyCode").val()
-            },
             success: function (data) {
                 if (data.code == 0) {
-                    var path = data.data;
-                    doSeckill(path);
+                    render(data.data);
                 } else {
                     layer.msg(data.msg);
                 }
@@ -117,6 +119,109 @@
     }
 
 
+    //进行页面渲染
+    function render(detail) {
+        var seckillStatus = detail.seckillStatus;
+        var remainSeconds = detail.remainSeconds;
+        var goods = detail.goods;
+        var user = detail.user;
+        if (user) {
+            $("#userTip").hide();
+        }
+        $("#goodsName").text(goods.goodsName);
+        $("#goodsImg").attr("src", goods.goodsImg);
+        $("#startTime").text(new Date(goods.startDate).format("yyyy-MM-dd hh:mm:ss"));
+        $("#remainSeconds").val(remainSeconds);
+        $("#goodsId").val(goods.id);
+        $("#goodsPrice").text(goods.goodsPrice);
+        $("#seckillPrice").text(goods.seckillPrice);
+        $("#stockCount").text(goods.stockCount);
+        countDown();
+    }
+
+    //渲染秒杀倒计时，以及展示隐藏秒杀按钮，秒杀验证码，输入验证码的输入框
+    function countDown() {
+        var remainSeconds = $("#remainSeconds").val();
+        var timeout;
+        if (remainSeconds > 0) {//秒杀还没开始，倒计时
+            $("#buyButton").attr("disabled", true);
+            $("#seckillTip").html("秒杀倒计时：" + remainSeconds + "秒");
+            timeout = setTimeout(function () {
+                $("#countDown").text(remainSeconds - 1);
+                $("#remainSeconds").val(remainSeconds - 1);
+                countDown();
+            }, 1000);
+        } else if (remainSeconds === 0) {//秒杀进行中
+            $("#buyButton").attr("disabled", false);
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+            $("#seckillTip").html("秒杀进行中");
+            $("#verifyCodeImg").attr("src", "/seckill/verifyCode?goodsId=" + $("#goodsId").val());
+            $("#verifyCodeImg").show();
+            $("#verifyCode").show();
+        } else {//秒杀已经结束
+            $("#buyButton").attr("disabled", true);
+            $("#seckillTip").html("秒杀已经结束");
+            $("#verifyCodeImg").hide();
+            $("#verifyCode").hide();
+        }
+    }
+
+    //刷新验证码
+    function refreshVerifyCode() {
+        $("#verifyCodeImg").attr("src", "/seckill/verifyCode?goodsId=" + $("#goodsId").val() + "&timestamp=" + new Date().getTime());
+    }
+
+
+    //点击秒杀按钮后会发起获取秒杀接口请求
+    function getSeckillPath() {
+        var goodsId = $("#goodsId").val();
+        g_showLoading();
+        $.ajax({
+            url: "/seckill/path",
+            type: "GET",
+            data: {
+                goodsId: goodsId,
+                verifyCode: $("#verifyCode").val()
+            },
+            success: function (data) {
+                if (data.code === 0) {
+                    var path = data.data;
+                    doSeckill(path);
+                } else {
+                    layer.msg(data.msg);
+                }
+            },
+            error: function () {
+                layer.msg("客户端请求有误");
+            }
+        });
+    }
+    //开始秒杀，进行预减库存，并将创建订单的请求假如Rabbit队列中
+    function doSeckill(path) {
+        $.ajax({
+            url: "/seckill/" + path + "/do_seckill",
+            type: "POST",
+            data: {
+                goodsId: $("#goodsId").val()
+            },
+            success: function (data) {
+                if (data.code === 0) {
+                    //window.location.href="/order_detail.htm?orderId="+data.data.id;
+                    getSeckillResult($("#goodsId").val());
+                } else {
+                    layer.msg(data.msg);
+                }
+            },
+            error: function () {
+                layer.msg("客户端请求有误");
+            }
+        });
+
+    }
+
+    //渲染秒杀是否成功的结果（rabbit队列中的请求是否执行（秒杀订单是否生成））
     function getSeckillResult(goodsId) {
         g_showLoading();
         $.ajax({
@@ -153,103 +258,6 @@
         });
     }
 
-    function doSeckill(path) {
-        $.ajax({
-            url: "/seckill/" + path + "/do_seckill",
-            type: "POST",
-            data: {
-                goodsId: $("#goodsId").val()
-            },
-            success: function (data) {
-                if (data.code === 0) {
-                    //window.location.href="/order_detail.htm?orderId="+data.data.id;
-                    getSeckillResult($("#goodsId").val());
-                } else {
-                    layer.msg(data.msg);
-                }
-            },
-            error: function () {
-                layer.msg("客户端请求有误");
-            }
-        });
 
-    }
-
-    //进行页面渲染
-    function render(detail) {
-        var seckillStatus = detail.seckillStatus;
-        var remainSeconds = detail.remainSeconds;
-        var goods = detail.goods;
-        var user = detail.user;
-        if (user) {
-            $("#userTip").hide();
-        }
-        $("#goodsName").text(goods.goodsName);
-        $("#goodsImg").attr("src", goods.goodsImg);
-        $("#startTime").text(new Date(goods.startDate).format("yyyy-MM-dd hh:mm:ss"));
-        $("#remainSeconds").val(remainSeconds);
-        $("#goodsId").val(goods.id);
-        $("#goodsPrice").text(goods.goodsPrice);
-        $("#seckillPrice").text(goods.seckillPrice);
-        $("#stockCount").text(goods.stockCount);
-        countDown();
-    }
-
-    $(function () {
-        //countDown();
-        getDetail();
-    });
-
-    function getDetail() {
-        //解析参数goodsId
-        var goodsId = g_getQueryString("goodsId");
-        $.ajax({
-            url: "/goods/detail/" + goodsId,
-            type: "GET",
-            success: function (data) {
-                if (data.code == 0) {
-                    render(data.data);
-                } else {
-                    layer.msg(data.msg);
-                }
-            },
-            error: function () {
-                layer.msg("客户端请求有误");
-            }
-        });
-    }
-
-    function countDown() {
-        var remainSeconds = $("#remainSeconds").val();
-        var timeout;
-        if (remainSeconds > 0) {//秒杀还没开始，倒计时
-            $("#buyButton").attr("disabled", true);
-            $("#seckillTip").html("秒杀倒计时：" + remainSeconds + "秒");
-            timeout = setTimeout(function () {
-                $("#countDown").text(remainSeconds - 1);
-                $("#remainSeconds").val(remainSeconds - 1);
-                countDown();
-            }, 1000);
-        } else if (remainSeconds == 0) {//秒杀进行中
-            $("#buyButton").attr("disabled", false);
-            if (timeout) {
-                clearTimeout(timeout);
-            }
-            $("#seckillTip").html("秒杀进行中");
-            $("#verifyCodeImg").attr("src", "/seckill/verifyCode?goodsId=" + $("#goodsId").val());
-            $("#verifyCodeImg").show();
-            $("#verifyCode").show();
-        } else {//秒杀已经结束
-            $("#buyButton").attr("disabled", true);
-            $("#seckillTip").html("秒杀已经结束");
-            $("#verifyCodeImg").hide();
-            $("#verifyCode").hide();
-        }
-    }
-
-    //刷新验证码
-    function refreshVerifyCode() {
-        $("#verifyCodeImg").attr("src", "/seckill/verifyCode?goodsId=" + $("#goodsId").val() + "&timestamp=" + new Date().getTime());
-    }
 </script>
 </html>

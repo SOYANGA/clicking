@@ -106,6 +106,8 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
         out.write(errorMessage.getBytes("UTF-8"));
         out.flush();
         out.close();
+
+        //一下是异常处理的
 //        ServletOutputStream out = null;
 //        try {
 //            out = response.getOutputStream();

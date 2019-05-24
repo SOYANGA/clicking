@@ -75,6 +75,7 @@ public class SeckillService {
 
 
     public long getSeckillResult(Long userId, long goodsId) {
+        //判断Redis缓存中是否有了秒杀订单，确定订单
         SeckillOrder order = orderService.getSeckillOrderByUserIdGoodsId(userId, goodsId);
         if (order != null) {//秒杀成功
             return order.getOrderId();
@@ -168,7 +169,7 @@ public class SeckillService {
         g.setFont(new Font("Candara", Font.BOLD, 24));
         g.drawString(verifyCode, 8, 24);
         g.dispose();
-        //把验证码存到redis中
+        //把验证码存到redis中 假如用户刷新验证码，Redisz中的数据就会覆盖
         int rnd = calc(verifyCode);
         redisService.set(SeckillKey.getSeckillVerifyCode, user.getId() + "," + goodsId, rnd);
         //输出图片
