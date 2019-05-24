@@ -2,8 +2,7 @@
 
 <center><b>When you're ready to buy a seckill item, you click the seckill button repeatedly</b></center> 
 
-
-![项目作者](https://img.shields.io/badge/author-soyanga-orange.svg) ![项目使用语言](https://img.shields.io/badge/language-java-yellow.svg) ![JDK版本](https://img.shields.io/badge/JDK-1.8-brightgreen.svg) ![项目状态](https://img.shields.io/badge/clicking-doing-green.svg) ![项目进度](http://progressed.io/bar/80?title=progress)
+[![项目作者](https://img.shields.io/badge/author-soyanga-orange.svg)](https://github.com/SOYANGA) ![项目使用语言](https://img.shields.io/badge/language-java-yellow.svg) ![JDK版本](https://img.shields.io/badge/JDK-1.8-brightgreen.svg) ![项目状态](https://img.shields.io/badge/clicking-doing-green.svg) ![项目进度](http://progressed.io/bar/80?title=progress)
 
 ## 项目介绍：
 
@@ -80,8 +79,8 @@ Clicking是一个基于SpringBoot实现的秒杀系统，通过一些优化，�
 
 1. 直接将[last version](https://github.com/SOYANGA/clicking/tree/master/latest%20version/seconds_kill_system%20_8)文件导入IDEA即可，Maven提示选择自动导入依赖。
 2. 启动前请根据本地环境配置好[application.properties](https://github.com/SOYANGA/clicking/blob/master/latest%20version/seconds_kill_system%20_8/src/main/resources/application.properties)中的**数据库，Redis，Rabbit**相关配置 (eg:地址，端口号)。
-3. 启动前请先创建seckill数据库,数据库建表语句放在：[/mysql/seckill_sql.sql]()文件内。运行前务必先在插入**秒杀用户信息**、**商品信息**、**秒杀商品信息**、**秒杀开始结束时间**（…因为目前还没有做注册功能）。:busts_in_silhouette:
-4. 以上3步做好后，运行``src/main/java/com/github/soyanga/secondskillsystem`下的`/MainApplication.java`中的main方法访问http://localhost:8080/login/to_login即可进入登陆页面。
+3. 启动前请先创建seckill数据库,数据库建表语句放在：[/mysql/seckill_sql.sql](https://github.com/SOYANGA/clicking/blob/master/mysql/seckill_sql.sql)文件内。运行前务必先在插入**秒杀用户信息**、**商品信息**、**秒杀商品信息**、**秒杀开始结束时间**（…因为目前还没有做注册功能）。:busts_in_silhouette:
+4. 以上3步做好后，运行`src/main/java/com/github/soyanga/secondskillsystem`下的`/MainApplication.java`中的main方法访问http://localhost:8080/login/to_login即可进入登陆页面。
 5. 本项目运行环境默认是在windows下的，如需部署到服务器上则根据实际情况自行配置相关参数。:yum:
 
 ## 秒杀系统优化
@@ -119,10 +118,11 @@ Clicking是一个基于SpringBoot实现的秒杀系统，通过一些优化，�
 1. 数据库加唯一索引：防止用户重复购买（添加事务，数据库添加失败就回滚并不会创建订单）
 2. SQL加库存数量判断：防止库存变成负数
 
-## 项目执行流程(…正在整理完善  :>)
+## 项目执行流程
 
 ![ProjectPresentations3](https://github.com/SOYANGA/clicking/blob/master/img/clicking项目流程图.png)
 
 ## 项目详细搭建过程，具体技术实现（…正在整理完善 :happy:)
 
 [![我的博客](https://img.shields.io/badge/Blog-@SOYANGA-red.svg)](https://soyanga.github.io/)
+
